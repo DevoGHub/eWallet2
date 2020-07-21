@@ -192,6 +192,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel3MouseClicked"/>
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel3MouseEntered"/>
             <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel3MouseExited"/>
           </Events>
@@ -318,7 +319,6 @@
                       <Component id="jLabel23" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel17" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel12" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel10" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel22" pref="108" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
@@ -328,6 +328,7 @@
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jLabel21" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jLabel10" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -345,7 +346,6 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="date_tf" min="-2" pref="96" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="title_cb" max="32767" attributes="0"/>
                       <Component id="gender_cb" max="32767" attributes="0"/>
                       <Component id="phone_tf" alignment="0" max="32767" attributes="0"/>
                       <Component id="email_tf" max="32767" attributes="0"/>
@@ -355,6 +355,7 @@
                       <Component id="question_tf1" max="32767" attributes="0"/>
                       <Component id="question_tf2" max="32767" attributes="0"/>
                       <Component id="question_tf3" max="32767" attributes="0"/>
+                      <Component id="title_cb" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="69" max="32767" attributes="0"/>
               </Group>

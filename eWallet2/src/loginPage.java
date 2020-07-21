@@ -1,4 +1,6 @@
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import java.sql.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -33,6 +35,11 @@ Color exitColor=new Color(77,14,1);
         loginPanel = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        username_tf = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        password_pf = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
         sidePanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -77,23 +84,73 @@ Color exitColor=new Color(77,14,1);
                 .addGap(23, 23, 23))
         );
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel10.setText("Username");
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel11.setText("Password");
+
+        jButton1.setBackground(new java.awt.Color(214, 175, 168));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setText("Log In");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
         loginPanelLayout.setHorizontalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(username_tf, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                    .addComponent(password_pf))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(222, 222, 222))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPanelLayout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(username_tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(password_pf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         sidePanel.setBackground(new java.awt.Color(53, 12, 3));
 
         jPanel2.setBackground(new java.awt.Color(97, 34, 21));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel2MouseExited(evt);
+            }
+        });
 
         jLabel2.setBackground(new java.awt.Color(97, 34, 21));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/login.png"))); // NOI18N
@@ -121,6 +178,17 @@ Color exitColor=new Color(77,14,1);
         );
 
         jPanel1.setBackground(new java.awt.Color(77, 14, 1));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel1MouseExited(evt);
+            }
+        });
 
         jLabel1.setBackground(new java.awt.Color(250, 250, 250));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/signup.png"))); // NOI18N
@@ -149,6 +217,17 @@ Color exitColor=new Color(77,14,1);
         );
 
         jPanel3.setBackground(new java.awt.Color(77, 14, 1));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel3MouseExited(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(250, 250, 250));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/forgotPassword.png"))); // NOI18N
@@ -175,6 +254,17 @@ Color exitColor=new Color(77,14,1);
         );
 
         jPanel4.setBackground(new java.awt.Color(77, 14, 1));
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel4MouseExited(evt);
+            }
+        });
 
         jLabel4.setBackground(new java.awt.Color(250, 250, 250));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/exit.png"))); // NOI18N
@@ -242,6 +332,104 @@ Color exitColor=new Color(77,14,1);
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //will login to home screen
+
+        // gathering info from the filled up form
+        String username1=username_tf.getText();
+        String password1=new String(password_pf.getPassword());
+        try
+        {
+            Class.forName("java.sql.DriverManager");
+            Connection con;
+            con=(Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","");
+
+            Statement smt=(Statement)con.createStatement(); //select query from customer_deails
+            String query="Select * from customer_details where username='"+username1+"';";
+            ResultSet rs=smt.executeQuery(query);
+
+            if (!rs.isBeforeFirst()) //conditon 1: to check if username exists or not
+            {
+                JOptionPane.showMessageDialog(null,"Please enter correct username");
+                username_tf.setText("");
+            }
+            else //'else' for condition 1
+            {
+                while(rs.next())
+                {
+                    String password2=rs.getString("password");
+                    if (password1.equals(password2)) //condtion 2: 'if' to check if the  password is correct or not
+                    {
+                        new accountOverviewPage(username1).setVisible(true);
+                        this.setVisible(false);
+                    }
+                    else //'else' for condition 2
+                    {
+                        JOptionPane.showMessageDialog(null, "Please enter correct password");
+                        password_pf.setText("");
+                    }
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this,e.getMessage());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+//will clear the form
+
+username_tf.setText("");
+password_pf.setText("");
+    }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+new signupPage().setVisible(true);
+this.setVisible(false);
+    }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+new forgotPasswordPage().setVisible(true);
+this.setVisible(false);
+    }//GEN-LAST:event_jPanel3MouseClicked
+
+    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+System.exit(0);
+    }//GEN-LAST:event_jPanel4MouseClicked
+
+    private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
+jPanel1.setBackground(hoverColor);
+    }//GEN-LAST:event_jPanel1MouseEntered
+
+    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
+jPanel2.setBackground(hoverColor);
+    }//GEN-LAST:event_jPanel2MouseEntered
+
+    private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
+jPanel3.setBackground(hoverColor);
+    }//GEN-LAST:event_jPanel3MouseEntered
+
+    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
+jPanel4.setBackground(hoverColor);
+    }//GEN-LAST:event_jPanel4MouseEntered
+
+    private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
+jPanel1.setBackground(exitColor);
+    }//GEN-LAST:event_jPanel1MouseExited
+
+    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
+jPanel2.setBackground(activeColor);
+    }//GEN-LAST:event_jPanel2MouseExited
+
+    private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
+jPanel3.setBackground(exitColor);
+    }//GEN-LAST:event_jPanel3MouseExited
+
+    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
+jPanel4.setBackground(exitColor);
+    }//GEN-LAST:event_jPanel4MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -278,7 +466,10 @@ Color exitColor=new Color(77,14,1);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -293,6 +484,8 @@ Color exitColor=new Color(77,14,1);
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel loginPanel;
+    private javax.swing.JPasswordField password_pf;
     private javax.swing.JPanel sidePanel;
+    private javax.swing.JTextField username_tf;
     // End of variables declaration//GEN-END:variables
 }
