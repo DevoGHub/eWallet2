@@ -336,7 +336,7 @@ Color exitColor=new Color(77,14,1);
         jLabel29.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel29.setText("Your Favourite Animal");
 
-        jButton1.setBackground(new java.awt.Color(214, 175, 168));
+        jButton1.setBackground(new java.awt.Color(234, 195, 168));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setText("Create Account");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

@@ -1,3 +1,6 @@
+import java.sql.*;
+import java.awt.Color;
+import javax.swing.JOptionPane;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,12 +12,20 @@
  * @author devjy
  */
 public class forgotPasswordPage extends javax.swing.JFrame {
-
+Color hoverColor=new Color(122,43,16);
+Color activeColor=new Color(97,34,21);
+Color exitColor=new Color(77,14,1);
+String flagUser="";
     /**
      * Creates new form forgotPasswordPage
      */
     public forgotPasswordPage() {
         initComponents();
+        new_pf.setVisible(false);
+        confirm_pf.setVisible(false);
+        jButton2.setVisible(false);
+        jLabel15.setVisible(false);
+        jLabel16.setVisible(false);
     }
 
     /**
@@ -29,6 +40,20 @@ public class forgotPasswordPage extends javax.swing.JFrame {
         loginPanel = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        you_tf = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        city_tf = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        sport_tf = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        animal_tf = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        new_pf = new javax.swing.JPasswordField();
+        jLabel16 = new javax.swing.JLabel();
+        confirm_pf = new javax.swing.JPasswordField();
+        jButton2 = new javax.swing.JButton();
         sidePanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -44,6 +69,7 @@ public class forgotPasswordPage extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         loginPanel.setBackground(new java.awt.Color(143, 125, 122));
 
@@ -60,7 +86,7 @@ public class forgotPasswordPage extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(473, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addGap(98, 98, 98))
         );
@@ -72,23 +98,149 @@ public class forgotPasswordPage extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
         );
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel10.setText("Username");
+
+        you_tf.setPreferredSize(new java.awt.Dimension(485, 27));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel11.setText("Your Favourite City");
+
+        city_tf.setPreferredSize(new java.awt.Dimension(485, 27));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel12.setText("Your Favourite Sport");
+
+        sport_tf.setPreferredSize(new java.awt.Dimension(485, 27));
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel13.setText("Your Favourite Animal");
+
+        animal_tf.setPreferredSize(new java.awt.Dimension(485, 27));
+
+        jButton1.setBackground(new java.awt.Color(234, 195, 168));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setText("Verify User");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel15.setText("New Password");
+
+        new_pf.setPreferredSize(new java.awt.Dimension(485, 27));
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel16.setText("Confirm Password");
+
+        confirm_pf.setPreferredSize(new java.awt.Dimension(485, 27));
+        confirm_pf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirm_pfActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBackground(new java.awt.Color(234, 195, 168));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton2.setText("Reset Password");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
         loginPanelLayout.setHorizontalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(243, 243, 243)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(loginPanelLayout.createSequentialGroup()
+                                    .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(new_pf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(confirm_pf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
+                                    .addGap(198, 198, 198)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(151, 151, 151)))
+                            .addGroup(loginPanelLayout.createSequentialGroup()
+                                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(you_tf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(city_tf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(sport_tf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(animal_tf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addGap(71, 71, 71))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPanelLayout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(you_tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(city_tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(sport_tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(animal_tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(new_pf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(confirm_pf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         sidePanel.setBackground(new java.awt.Color(53, 12, 3));
 
-        jPanel2.setBackground(new java.awt.Color(97, 34, 21));
+        jPanel2.setBackground(new java.awt.Color(77, 14, 1));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel2MouseExited(evt);
+            }
+        });
 
         jLabel2.setBackground(new java.awt.Color(97, 34, 21));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/login.png"))); // NOI18N
@@ -116,6 +268,17 @@ public class forgotPasswordPage extends javax.swing.JFrame {
         );
 
         jPanel1.setBackground(new java.awt.Color(77, 14, 1));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel1MouseExited(evt);
+            }
+        });
 
         jLabel1.setBackground(new java.awt.Color(250, 250, 250));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/signup.png"))); // NOI18N
@@ -143,7 +306,15 @@ public class forgotPasswordPage extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        jPanel3.setBackground(new java.awt.Color(77, 14, 1));
+        jPanel3.setBackground(new java.awt.Color(97, 34, 21));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel3MouseExited(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(250, 250, 250));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/forgotPassword.png"))); // NOI18N
@@ -170,6 +341,17 @@ public class forgotPasswordPage extends javax.swing.JFrame {
         );
 
         jPanel4.setBackground(new java.awt.Color(77, 14, 1));
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel4MouseExited(evt);
+            }
+        });
 
         jLabel4.setBackground(new java.awt.Color(250, 250, 250));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/exit.png"))); // NOI18N
@@ -237,6 +419,149 @@ public class forgotPasswordPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+new signupPage().setVisible(true);
+this.setVisible(false);
+    }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+new loginPage().setVisible(true);
+this.setVisible(false);
+    }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+System.exit(0);
+    }//GEN-LAST:event_jPanel4MouseClicked
+
+    private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
+jPanel1.setBackground(hoverColor);
+    }//GEN-LAST:event_jPanel1MouseEntered
+
+    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
+jPanel2.setBackground(hoverColor);
+    }//GEN-LAST:event_jPanel2MouseEntered
+
+    private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
+jPanel3.setBackground(hoverColor);
+    }//GEN-LAST:event_jPanel3MouseEntered
+
+    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
+jPanel4.setBackground(hoverColor);
+    }//GEN-LAST:event_jPanel4MouseEntered
+
+    private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
+jPanel1.setBackground(exitColor);
+    }//GEN-LAST:event_jPanel1MouseExited
+
+    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
+jPanel2.setBackground(exitColor);
+    }//GEN-LAST:event_jPanel2MouseExited
+
+    private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
+jPanel3.setBackground(activeColor);
+    }//GEN-LAST:event_jPanel3MouseExited
+
+    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
+jPanel4.setBackground(exitColor);
+    }//GEN-LAST:event_jPanel4MouseExited
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //to verify user and the recovery quetions match up
+
+        String username=you_tf.getText();
+        String city=city_tf.getText();
+        String sport=sport_tf.getText();
+        String animal=animal_tf.getText();
+
+        try
+        {
+            Class.forName("java.sql.DriverManager");
+            Connection con;
+            con=(Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","");
+            Statement smt1=(Statement)con.createStatement();
+            String query1="Select * from recovery where username='"+username+"';";
+            ResultSet rs=smt1.executeQuery(query1);
+            while(rs.next())
+            {
+                String q1=rs.getString("q1");
+                String q2=rs.getString("q2");
+                String q3=rs.getString("q3");
+
+                if(q1.equals(city) && q2.equals(sport) && q3.equals(animal)) //conditon 1: checking the recovery answers
+                {
+                    jButton1.setVisible(false);
+                    animal_tf.setVisible(false);
+                    sport_tf.setVisible(false);
+                    city_tf.setVisible(false);
+                    you_tf.setVisible(false);
+                    jLabel11.setVisible(false);
+                    jLabel12.setVisible(false);
+                    jLabel13.setVisible(false);
+                    jLabel10.setVisible(false);
+                    new_pf.setVisible(true);
+                    confirm_pf.setVisible(true);
+                    new_pf.setVisible(true);
+                    confirm_pf.setVisible(true);
+                    jButton2.setVisible(true);
+                    jLabel15.setVisible(true);
+                    jLabel16.setVisible(true);
+                    flagUser=username;
+                }
+                else //else for conditon 1
+                {
+                    JOptionPane.showMessageDialog(null, "Please enter correct recovery answers.");
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void confirm_pfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirm_pfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confirm_pfActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //will allow user to reset password
+
+        String username=flagUser;
+        String password_new=new String(new_pf.getPassword());
+        String password_confirm=new String(confirm_pf.getPassword());
+
+        if(password_new.length()>6) //conditon 1:making sure password is long enough
+        {
+            if(password_new.equals(password_confirm)) //conditon 2:confirm password
+            {
+                try
+                {
+                    Class.forName("java.sql.DriverManager");
+                    Connection con;
+                    con=(Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","");
+                    Statement smt=(Statement)con.createStatement();
+                    String query="Update customer_details set password='"+password_new+"' where username='"+username+"';";
+                    smt.executeUpdate(query);
+                    JOptionPane.showMessageDialog(null, "Your password has successfully been reset. Press 'ok' or 'x' to continue to sign in page.");
+                    new loginPage().setVisible(true);
+                    this.setVisible(false);
+                }
+                catch(Exception e)
+                {
+                    JOptionPane.showMessageDialog(this, e.getMessage());
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "New password and confirmed password do not match");
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Please choose a longer password.");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -273,7 +598,18 @@ public class forgotPasswordPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField animal_tf;
+    private javax.swing.JTextField city_tf;
+    private javax.swing.JPasswordField confirm_pf;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -288,6 +624,9 @@ public class forgotPasswordPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel loginPanel;
+    private javax.swing.JPasswordField new_pf;
     private javax.swing.JPanel sidePanel;
+    private javax.swing.JTextField sport_tf;
+    private javax.swing.JTextField you_tf;
     // End of variables declaration//GEN-END:variables
 }
