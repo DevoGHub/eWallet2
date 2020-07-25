@@ -1,3 +1,6 @@
+
+import java.awt.Color;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,7 +12,10 @@
  * @author devjy
  */
 public class accountOverviewPage extends javax.swing.JFrame {
-
+String flagUsername="";
+Color hoverColor=new Color(122,43,16);
+Color activeColor=new Color(97,34,21);
+Color exitColor=new Color(77,14,1);
     /**
      * Creates new form accountOverviewPage
      */
@@ -19,6 +25,7 @@ public class accountOverviewPage extends javax.swing.JFrame {
     
     public accountOverviewPage(String username) {
         initComponents();
+        flagUsername=username;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,6 +39,7 @@ public class accountOverviewPage extends javax.swing.JFrame {
         loginPanel = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         sidePanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -47,6 +55,7 @@ public class accountOverviewPage extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         loginPanel.setBackground(new java.awt.Color(143, 125, 122));
 
@@ -75,23 +84,40 @@ public class accountOverviewPage extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
         );
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jLabel1.setText("Hi, ");
+
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
         loginPanelLayout.setHorizontalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPanelLayout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(522, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addContainerGap(482, Short.MAX_VALUE))
         );
 
         sidePanel.setBackground(new java.awt.Color(53, 12, 3));
 
-        jPanel2.setBackground(new java.awt.Color(97, 34, 21));
+        jPanel2.setBackground(new java.awt.Color(77, 14, 1));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel2MouseExited(evt);
+            }
+        });
 
         jLabel6.setForeground(new java.awt.Color(225, 198, 193));
         jLabel6.setText("View Passbook");
@@ -111,7 +137,15 @@ public class accountOverviewPage extends javax.swing.JFrame {
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.setBackground(new java.awt.Color(77, 14, 1));
+        jPanel1.setBackground(new java.awt.Color(97, 34, 21));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel1MouseExited(evt);
+            }
+        });
 
         jLabel5.setForeground(new java.awt.Color(225, 198, 193));
         jLabel5.setText("Account Overview");
@@ -133,6 +167,14 @@ public class accountOverviewPage extends javax.swing.JFrame {
         );
 
         jPanel3.setBackground(new java.awt.Color(77, 14, 1));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel3MouseExited(evt);
+            }
+        });
 
         jLabel7.setForeground(new java.awt.Color(225, 198, 193));
         jLabel7.setText("Add Money");
@@ -151,6 +193,14 @@ public class accountOverviewPage extends javax.swing.JFrame {
         );
 
         jPanel4.setBackground(new java.awt.Color(77, 14, 1));
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel4MouseExited(evt);
+            }
+        });
 
         jLabel8.setForeground(new java.awt.Color(225, 198, 193));
         jLabel8.setText("Change Password");
@@ -172,6 +222,14 @@ public class accountOverviewPage extends javax.swing.JFrame {
         );
 
         jPanel7.setBackground(new java.awt.Color(77, 14, 1));
+        jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel7MouseExited(evt);
+            }
+        });
 
         jLabel13.setForeground(new java.awt.Color(225, 198, 193));
         jLabel13.setText("Change Recovery Answers");
@@ -192,6 +250,17 @@ public class accountOverviewPage extends javax.swing.JFrame {
         );
 
         jPanel12.setBackground(new java.awt.Color(77, 14, 1));
+        jPanel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel12MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel12MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel12MouseExited(evt);
+            }
+        });
 
         jLabel23.setForeground(new java.awt.Color(225, 198, 193));
         jLabel23.setText("Logout");
@@ -258,6 +327,59 @@ public class accountOverviewPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
+jPanel1.setBackground(hoverColor);
+    }//GEN-LAST:event_jPanel1MouseEntered
+
+    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
+jPanel2.setBackground(hoverColor);
+    }//GEN-LAST:event_jPanel2MouseEntered
+
+    private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
+jPanel3.setBackground(hoverColor);
+    }//GEN-LAST:event_jPanel3MouseEntered
+
+    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
+jPanel4.setBackground(hoverColor);
+    }//GEN-LAST:event_jPanel4MouseEntered
+
+    private void jPanel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseEntered
+jPanel7.setBackground(hoverColor);
+    }//GEN-LAST:event_jPanel7MouseEntered
+
+    private void jPanel12MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel12MouseEntered
+jPanel12.setBackground(hoverColor);
+    }//GEN-LAST:event_jPanel12MouseEntered
+
+    private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
+jPanel1.setBackground(activeColor);
+    }//GEN-LAST:event_jPanel1MouseExited
+
+    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
+jPanel2.setBackground(exitColor);
+    }//GEN-LAST:event_jPanel2MouseExited
+
+    private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
+jPanel3.setBackground(exitColor);
+    }//GEN-LAST:event_jPanel3MouseExited
+
+    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
+jPanel4.setBackground(exitColor);
+    }//GEN-LAST:event_jPanel4MouseExited
+
+    private void jPanel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseExited
+jPanel7.setBackground(exitColor);
+    }//GEN-LAST:event_jPanel7MouseExited
+
+    private void jPanel12MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel12MouseExited
+jPanel12.setBackground(exitColor);
+    }//GEN-LAST:event_jPanel12MouseExited
+
+    private void jPanel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel12MouseClicked
+new loginPage().setVisible(true);
+this.setVisible(false);
+    }//GEN-LAST:event_jPanel12MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -294,6 +416,7 @@ public class accountOverviewPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel5;

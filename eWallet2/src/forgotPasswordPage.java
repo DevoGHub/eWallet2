@@ -473,35 +473,43 @@ jPanel4.setBackground(exitColor);
             Statement smt1=(Statement)con.createStatement();
             String query1="Select * from recovery where username='"+username+"';";
             ResultSet rs=smt1.executeQuery(query1);
-            while(rs.next())
+            if(!rs.isBeforeFirst())
             {
-                String q1=rs.getString("q1");
-                String q2=rs.getString("q2");
-                String q3=rs.getString("q3");
+                JOptionPane.showMessageDialog(this, "Please provide correct username.");
+                you_tf.setText("");
+            }
+            else
+            {
+                while(rs.next())
+                {
+                    String q1=rs.getString("q1");
+                    String q2=rs.getString("q2");
+                    String q3=rs.getString("q3");
 
-                if(q1.equals(city) && q2.equals(sport) && q3.equals(animal)) //conditon 1: checking the recovery answers
-                {
-                    jButton1.setVisible(false);
-                    animal_tf.setVisible(false);
-                    sport_tf.setVisible(false);
-                    city_tf.setVisible(false);
-                    you_tf.setVisible(false);
-                    jLabel11.setVisible(false);
-                    jLabel12.setVisible(false);
-                    jLabel13.setVisible(false);
-                    jLabel10.setVisible(false);
-                    new_pf.setVisible(true);
-                    confirm_pf.setVisible(true);
-                    new_pf.setVisible(true);
-                    confirm_pf.setVisible(true);
-                    jButton2.setVisible(true);
-                    jLabel15.setVisible(true);
-                    jLabel16.setVisible(true);
-                    flagUser=username;
-                }
-                else //else for conditon 1
-                {
-                    JOptionPane.showMessageDialog(null, "Please enter correct recovery answers.");
+                    if(q1.equals(city) && q2.equals(sport) && q3.equals(animal)) //conditon 1: checking the recovery answers
+                    {
+                        jButton1.setVisible(false);
+                        animal_tf.setVisible(false);
+                        sport_tf.setVisible(false);
+                        city_tf.setVisible(false);
+                        you_tf.setVisible(false);
+                        jLabel11.setVisible(false);
+                        jLabel12.setVisible(false);
+                        jLabel13.setVisible(false);
+                        jLabel10.setVisible(false);
+                        new_pf.setVisible(true);
+                        confirm_pf.setVisible(true);
+                        new_pf.setVisible(true);
+                        confirm_pf.setVisible(true);
+                        jButton2.setVisible(true);
+                        jLabel15.setVisible(true);
+                        jLabel16.setVisible(true);
+                        flagUser=username;
+                    }
+                    else //else for conditon 1
+                    {
+                        JOptionPane.showMessageDialog(null, "Please enter correct recovery answers.");
+                    }
                 }
             }
         }
