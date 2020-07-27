@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
  * @author devjy
  */
 public class changeRecoveryAnswersPage extends javax.swing.JFrame {
+    int theme=0;
 String flagUsername="";
 Color hoverColor=new Color(122,43,16);
 Color activeColor=new Color(97,34,21);
@@ -69,6 +70,7 @@ public changeRecoveryAnswersPage(String username) {
         sidePanel.setBackground(new java.awt.Color(53, 12, 3));
 
         jPanel2.setBackground(new java.awt.Color(77, 14, 1));
+        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel2MouseClicked(evt);
@@ -100,6 +102,7 @@ public changeRecoveryAnswersPage(String username) {
         );
 
         jPanel1.setBackground(new java.awt.Color(77, 14, 1));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel1MouseClicked(evt);
@@ -132,6 +135,7 @@ public changeRecoveryAnswersPage(String username) {
         );
 
         jPanel3.setBackground(new java.awt.Color(77, 14, 1));
+        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel3MouseClicked(evt);
@@ -161,6 +165,7 @@ public changeRecoveryAnswersPage(String username) {
         );
 
         jPanel4.setBackground(new java.awt.Color(77, 14, 1));
+        jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel4MouseClicked(evt);
@@ -193,6 +198,7 @@ public changeRecoveryAnswersPage(String username) {
         );
 
         jPanel7.setBackground(new java.awt.Color(97, 34, 21));
+        jPanel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel7MouseClicked(evt);
@@ -224,6 +230,7 @@ public changeRecoveryAnswersPage(String username) {
         );
 
         jPanel12.setBackground(new java.awt.Color(77, 14, 1));
+        jPanel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel12.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel12MouseClicked(evt);
@@ -286,6 +293,7 @@ public changeRecoveryAnswersPage(String username) {
         loginPanel.setBackground(new java.awt.Color(143, 125, 122));
 
         jPanel5.setBackground(new java.awt.Color(166, 49, 24));
+        jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel9.setBackground(new java.awt.Color(215, 178, 173));
         jLabel9.setFont(new java.awt.Font("Segoe Script", 3, 48)); // NOI18N
@@ -328,6 +336,7 @@ public changeRecoveryAnswersPage(String username) {
         jButton1.setBackground(new java.awt.Color(234, 195, 168));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setText("Change Answers");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
