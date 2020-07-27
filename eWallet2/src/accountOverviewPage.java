@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author devjy
  */
 public class accountOverviewPage extends javax.swing.JFrame {
-String flagUsername="devyot00";
+String flagUsername="";
 Color hoverColor=new Color(122,43,16);
 Color activeColor=new Color(97,34,21);
 Color exitColor=new Color(77,14,1);
