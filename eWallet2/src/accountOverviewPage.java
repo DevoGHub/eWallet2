@@ -1,5 +1,6 @@
-
+import java.sql.*;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,7 +13,7 @@ import java.awt.Color;
  * @author devjy
  */
 public class accountOverviewPage extends javax.swing.JFrame {
-String flagUsername="";
+String flagUsername="devyot00";
 Color hoverColor=new Color(122,43,16);
 Color activeColor=new Color(97,34,21);
 Color exitColor=new Color(77,14,1);
@@ -26,6 +27,27 @@ Color exitColor=new Color(77,14,1);
     public accountOverviewPage(String username) {
         initComponents();
         flagUsername=username;
+        jLabel1.setText("Hi, "+flagUsername);
+     try
+     { 
+      Class.forName("java.sql.DriverManager");
+      Connection con;
+      con=(Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","");
+   
+      Statement smt=(Statement)con.createStatement();
+      String query= "Select * from user_account where username='"+username+"';";
+      ResultSet rs= smt.executeQuery(query);
+      
+      while(rs.next())
+      {
+       int amount=rs.getInt("amount");
+       account_balance_tf.setText(""+amount); //set user account balance in respective tf
+      }
+     }
+     catch (Exception e)
+     {
+      JOptionPane.showMessageDialog(this, e.getMessage());       
+     }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,6 +62,14 @@ Color exitColor=new Color(77,14,1);
         jPanel5 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        account_balance_tf = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        username_tf = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        amount_tf = new javax.swing.JTextField();
+        confirm_cb = new javax.swing.JCheckBox();
+        jButton2 = new javax.swing.JButton();
         sidePanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -87,6 +117,30 @@ Color exitColor=new Color(77,14,1);
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel1.setText("Hi, ");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setText("Account Balance");
+
+        account_balance_tf.setEditable(false);
+        account_balance_tf.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setText("Send Money To");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel10.setText("Amount To Be Sent");
+
+        confirm_cb.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        confirm_cb.setText("I Have Confirmed The Amount To Be Sent And The Username Mentioned");
+
+        jButton2.setBackground(new java.awt.Color(234, 195, 168));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton2.setText("Pay/Send");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
         loginPanelLayout.setHorizontalGroup(
@@ -94,7 +148,29 @@ Color exitColor=new Color(77,14,1);
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(loginPanelLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(account_balance_tf, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                            .addComponent(username_tf)))
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(amount_tf))
+                    .addComponent(confirm_cb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(71, 71, 71))
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         loginPanelLayout.setVerticalGroup(
@@ -104,13 +180,32 @@ Color exitColor=new Color(77,14,1);
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addContainerGap(482, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(account_balance_tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(username_tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(amount_tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(confirm_cb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
+                .addContainerGap(306, Short.MAX_VALUE))
         );
 
         sidePanel.setBackground(new java.awt.Color(53, 12, 3));
 
         jPanel2.setBackground(new java.awt.Color(77, 14, 1));
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel2MouseEntered(evt);
             }
@@ -168,6 +263,9 @@ Color exitColor=new Color(77,14,1);
 
         jPanel3.setBackground(new java.awt.Color(77, 14, 1));
         jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel3MouseEntered(evt);
             }
@@ -194,6 +292,9 @@ Color exitColor=new Color(77,14,1);
 
         jPanel4.setBackground(new java.awt.Color(77, 14, 1));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel4MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel4MouseEntered(evt);
             }
@@ -223,6 +324,9 @@ Color exitColor=new Color(77,14,1);
 
         jPanel7.setBackground(new java.awt.Color(77, 14, 1));
         jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel7MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel7MouseEntered(evt);
             }
@@ -380,6 +484,102 @@ new loginPage().setVisible(true);
 this.setVisible(false);
     }//GEN-LAST:event_jPanel12MouseClicked
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+//Will Transact Money
+        
+//Gathering All the info from the form        
+String usernamer,usernames;
+int amount=Integer.parseInt(amount_tf.getText());
+usernamer=username_tf.getText();
+usernames=flagUsername;
+int account=Integer.parseInt(account_balance_tf.getText());
+
+if(usernamer.equals(usernames)) //condition 1: User Not Paying to self
+{
+ JOptionPane.showMessageDialog(null, "You cannot pay or send to yourself");
+}
+else //else for condition 1
+{
+ if(confirm_cb.isSelected()) //condition 2:Confirmation confirmed
+ {
+  if(account>=amount) //condition 3:User cant exceed his balance
+  {
+   try
+   {
+    Class.forName("java.sql.DriverManager");
+    Connection con;
+    con=(Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","");
+    
+    Statement smt1=(Statement)con.createStatement();
+    String query1="Insert into transactions(username_sent,username_recieved,amount,trans_date) values('"+usernames+"','"+usernamer+"','"+amount+"',(select curdate()));";
+    smt1.executeUpdate(query1);
+    
+    Statement smt2=(Statement)con.createStatement();
+    String query2="Update user_account set amount=amount-"+amount+" where username='"+usernames+"';";
+    smt2.executeUpdate(query2);
+    
+    Statement smt3=(Statement)con.createStatement();
+    String query3="Update user_account set amount=amount+"+amount+" where username='"+usernamer+"';";
+    smt3.executeUpdate(query3);
+    
+    amount_tf.setText(null);
+    username_tf.setText(null);
+    Statement smt=(Statement)con.createStatement();
+      String query= "Select * from user_account where username='"+usernames+"';";
+      ResultSet rs= smt.executeQuery(query);
+      
+      while(rs.next())
+      {
+       int amount2=rs.getInt("amount");
+       account_balance_tf.setText(""+amount2); //set user account balance in respective tf
+   }
+   }
+   catch (Exception e)
+   {
+    String error=(String)e.getMessage();
+    if(error.equals("Cannot add or update a child row: a foreign key constraint fails (`bank`.`transactions`, CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`username_recieved`) REFERENCES `customer_details` (`username`))")) // error condition 1: wrong username input
+    {
+     JOptionPane.showMessageDialog(null, "Please Enter Correct Username.");
+    }
+    else //else for error conditions 
+    {
+     JOptionPane.showMessageDialog(this, e.getMessage());
+    }
+   }
+  }
+  else //else for condition 3
+  {
+   JOptionPane.showMessageDialog(null, "You cannot exceed your account balnce more than your account balance");
+   amount_tf.setText("");
+  }
+ }
+ else //else for condition 2
+ {
+  JOptionPane.showMessageDialog(null, "Please confirm the username and amount entered is correct");
+ }
+}
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+new viewPassbookPage(flagUsername).setVisible(true);
+this.setVisible(false);
+    }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+new addMoneyPage(flagUsername).setVisible(true);
+this.setVisible(false);
+    }//GEN-LAST:event_jPanel3MouseClicked
+
+    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+new changePasswordPage(flagUsername).setVisible(true);
+this.setVisible(false);
+    }//GEN-LAST:event_jPanel4MouseClicked
+
+    private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
+new changeRecoveryAnswersPage(flagUsername).setVisible(true);
+this.setVisible(false);
+    }//GEN-LAST:event_jPanel7MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -416,9 +616,16 @@ this.setVisible(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField account_balance_tf;
+    private javax.swing.JTextField amount_tf;
+    private javax.swing.JCheckBox confirm_cb;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -433,5 +640,6 @@ this.setVisible(false);
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JPanel sidePanel;
+    private javax.swing.JTextField username_tf;
     // End of variables declaration//GEN-END:variables
 }

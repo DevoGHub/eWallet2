@@ -1,6 +1,6 @@
-
+import java.sql.*;
 import java.awt.Color;
-
+import javax.swing.JOptionPane;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -22,6 +22,11 @@ Color exitColor=new Color(77,14,1);
     public changePasswordPage() {
         initComponents();
     }
+    public changePasswordPage(String username) {
+        initComponents();
+        flagUsername=username;
+        jLabel1.setText("Hi, "+username);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,6 +41,13 @@ Color exitColor=new Color(77,14,1);
         jPanel5 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        current_pf = new javax.swing.JPasswordField();
+        jLabel4 = new javax.swing.JLabel();
+        new_pf = new javax.swing.JPasswordField();
+        jLabel10 = new javax.swing.JLabel();
+        confirm_pf = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
         sidePanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -68,7 +80,7 @@ Color exitColor=new Color(77,14,1);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(473, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addGap(98, 98, 98))
         );
@@ -83,6 +95,24 @@ Color exitColor=new Color(77,14,1);
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel1.setText("Hi, ");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setText("Current Password");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setText("New Password");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel10.setText("Confirm New Password");
+
+        jButton1.setBackground(new java.awt.Color(234, 195, 168));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setText("Change Password");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
         loginPanelLayout.setHorizontalGroup(
@@ -90,8 +120,25 @@ Color exitColor=new Color(77,14,1);
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(loginPanelLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(current_pf)
+                    .addComponent(new_pf)
+                    .addComponent(confirm_pf))
+                .addGap(71, 71, 71))
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,7 +147,21 @@ Color exitColor=new Color(77,14,1);
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(current_pf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(new_pf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(confirm_pf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addGap(336, 336, 336))
         );
 
         sidePanel.setBackground(new java.awt.Color(53, 12, 3));
@@ -376,6 +437,64 @@ Color exitColor=new Color(77,14,1);
         jPanel12.setBackground(exitColor);
     }//GEN-LAST:event_jPanel12MouseExited
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //will let user change account password
+
+        String username=flagUsername;
+        String password_old=new String(current_pf.getPassword());
+        String password_new= new String(new_pf.getPassword());
+        String password_confirm=new String(confirm_pf.getPassword());
+
+        try
+        {
+            Class.forName("java.sql.DriverManager");
+            Connection con;
+            con=(Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","");
+
+            Statement smt1=(Statement)con.createStatement(); //select query from customer_deails
+            String query1="Select * from customer_details where username='"+username+"';";
+            ResultSet rs=smt1.executeQuery(query1);
+
+            while(rs.next())
+            {
+                String password=rs.getString("password");
+                if(password_old.equals(password)) //Condition 1:to check authenticity of old password
+                {
+                    if(password_new.equals(password_confirm)) //Condition 2:to confirm new password entered
+                    {
+                        if(password_new.length()>6) //Condition 3:to check the length of the new password
+                        {
+                            Statement smt2=(Statement)con.createStatement(); //statement to update password
+                            String query2="update customer_details set password='"+password_new+"' where username='"+username+"';";
+                            smt2.executeUpdate(query2);
+                            JOptionPane.showMessageDialog(null, "Your password has successfully been updated, click 'ok' or 'x' and sign in with new password");
+                            new loginPage().setVisible(true); //re-sign in required
+                            this.setVisible(false);
+                        }
+                        else //else for condition 3
+                        {
+                            JOptionPane.showMessageDialog(null, "Please choose a longer password");
+                        }
+                    }
+                    else //else for condition 2
+                    {
+                        JOptionPane.showMessageDialog(null ,"New pasword and confirmed passwords do not match");
+                        new_pf.setText(null);
+                        confirm_pf.setText(null);
+                    }
+                }
+                else //else for conditon 1
+                {
+                    JOptionPane.showMessageDialog(null, "Please enter correct Password");
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -412,9 +531,15 @@ Color exitColor=new Color(77,14,1);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField confirm_pf;
+    private javax.swing.JPasswordField current_pf;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -428,6 +553,7 @@ Color exitColor=new Color(77,14,1);
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel loginPanel;
+    private javax.swing.JPasswordField new_pf;
     private javax.swing.JPanel sidePanel;
     // End of variables declaration//GEN-END:variables
 }

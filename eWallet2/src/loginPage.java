@@ -56,6 +56,7 @@ Color exitColor=new Color(77,14,1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
+        setMinimumSize(new java.awt.Dimension(1060, 720));
         setResizable(false);
 
         loginPanel.setBackground(new java.awt.Color(143, 125, 122));
@@ -135,7 +136,7 @@ Color exitColor=new Color(77,14,1);
                     .addComponent(password_pf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(411, 411, 411))
         );
 
         sidePanel.setBackground(new java.awt.Color(53, 12, 3));
@@ -312,7 +313,7 @@ Color exitColor=new Color(77,14,1);
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(437, Short.MAX_VALUE))
+                .addGap(437, 437, 437))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -471,10 +472,6 @@ jPanel4.setBackground(exitColor);
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -488,17 +485,9 @@ jPanel4.setBackground(exitColor);
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JPasswordField password_pf;
     private javax.swing.JPanel sidePanel;
-    private javax.swing.JPanel signupPanel;
-    private javax.swing.JPanel signupPanel1;
-    private javax.swing.JPanel signupPanel2;
-    private javax.swing.JPanel signupPanel3;
     private javax.swing.JTextField username_tf;
     // End of variables declaration//GEN-END:variables
 }

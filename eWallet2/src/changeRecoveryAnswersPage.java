@@ -1,6 +1,6 @@
-
+import java.sql.*;
 import java.awt.Color;
-
+import javax.swing.JOptionPane;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -22,7 +22,11 @@ Color exitColor=new Color(77,14,1);
     public changeRecoveryAnswersPage() {
         initComponents();
     }
-
+public changeRecoveryAnswersPage(String username) {
+        initComponents();
+        flagUsername=username;
+        jLabel1.setText("Hi, "+username);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,6 +53,15 @@ Color exitColor=new Color(77,14,1);
         jPanel5 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        you_pf = new javax.swing.JPasswordField();
+        jLabel4 = new javax.swing.JLabel();
+        city_tf = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        sport_tf = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        animal_tf = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -285,14 +298,53 @@ Color exitColor=new Color(77,14,1);
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel1.setText("Hi, ");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setText("Password");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setText("Favourite City");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel10.setText("Favourite sport");
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel11.setText("Favourite Animal");
+
+        jButton1.setBackground(new java.awt.Color(234, 195, 168));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setText("Change Answers");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
         loginPanelLayout.setHorizontalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(you_pf)
+                            .addComponent(city_tf)
+                            .addComponent(sport_tf)
+                            .addComponent(animal_tf, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)))
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         loginPanelLayout.setVerticalGroup(
@@ -302,7 +354,25 @@ Color exitColor=new Color(77,14,1);
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(you_pf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(city_tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(sport_tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(animal_tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -376,6 +446,65 @@ Color exitColor=new Color(77,14,1);
         jPanel12.setBackground(exitColor);
     }//GEN-LAST:event_jPanel12MouseExited
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+//will check user authenticity
+
+String username=flagUsername;
+String q1=city_tf.getText();
+String q2=sport_tf.getText();
+String q3=animal_tf.getText();
+String password1=new String(you_pf.getPassword());
+try
+{
+    Class.forName("java.sql.DriverManager");
+    Connection con;
+    con=(Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","");
+
+    Statement smt=(Statement)con.createStatement(); //select query from customer_deails
+    String query="Select * from customer_details where username='"+username+"';";
+    ResultSet rs=smt.executeQuery(query);
+
+    while(rs.next())
+    {
+        String password2=rs.getString("password");
+        if(password1.equals(password2)) //condition 1:verifying user
+        {
+            if(q1.equals("") || q2.equals("") || q3.equals("")) //condtion 2: all answers answered by the user
+            {
+                JOptionPane.showMessageDialog(null, "Please enter all the recovery answers correctly");
+            }
+            else //else for condition 2
+            {
+                Statement smt1=(Statement)con.createStatement();
+                String query1="Update recovery set q1='"+q1+"' where username='"+username+"';";
+                smt1.executeUpdate(query1);
+
+                Statement smt2=(Statement)con.createStatement();
+                String query2="Update recovery set q2='"+q2+"' where username='"+username+"';";
+                smt2.executeUpdate(query2);
+
+                Statement smt3=(Statement)con.createStatement();
+                String query3="Update recovery set q3='"+q3+"' where username='"+username+"';";
+                smt3.executeUpdate(query3);
+
+                JOptionPane.showMessageDialog(null, "Your recovery answers have been successfully updated.");
+                new accountOverviewPage(username).setVisible(true);
+                this.setVisible(false);
+            }
+        }
+        else //else for condtion 1
+        {
+        JOptionPane.showMessageDialog(null, "Please enter correct password");
+        you_pf.setText(null);
+        }
+    }
+}
+catch(Exception e)
+{
+    JOptionPane.showMessageDialog(this, e.getMessage());
+}
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -412,9 +541,16 @@ Color exitColor=new Color(77,14,1);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField animal_tf;
+    private javax.swing.JTextField city_tf;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -429,5 +565,7 @@ Color exitColor=new Color(77,14,1);
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JPanel sidePanel;
+    private javax.swing.JTextField sport_tf;
+    private javax.swing.JPasswordField you_pf;
     // End of variables declaration//GEN-END:variables
 }

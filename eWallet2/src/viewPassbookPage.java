@@ -1,6 +1,8 @@
-
 import java.awt.Color;
-
+import java.awt.Font;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -22,7 +24,44 @@ Color exitColor=new Color(77,14,1);
     public viewPassbookPage() {
         initComponents();
     }
+    
+    public viewPassbookPage(String username) {
+        initComponents();
+        flagUsername=username;
+        jLabel1.setText("Hi, "+username);
+        DefaultTableModel model=(DefaultTableModel)passbook_tab.getModel();
+ try
+ {
+ Class.forName("java.sql.DriverManager");
+ Connection con;
+ con=(Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/bank","root","");
+ Statement smt=(Statement)con.createStatement();
+ String query="Select * from transactions where username_sent='"+username+"' or username_recieved='"+username+"';";
+ ResultSet rs=smt.executeQuery(query);
+ while(rs.next())
+ {
+  String transaction_id=rs.getString("trans_id");
+  String amount=rs.getString("amount");
+  String username_sent=rs.getString("username_sent");
+  String username_recieved=rs.getString("username_recieved");
+  String transaction_date=rs.getString("trans_date");
+  model.addRow
+  (
+   new Object[]
+   {
+    transaction_id, amount, username_sent, username_recieved, transaction_date
+   }
+  );
+ }
+ }
+ catch(Exception e)
+ {
+  JOptionPane.showMessageDialog(this, e.getMessage());
+ }
+ 
+ passbook_tab.getTableHeader().setFont( new Font( "Tahoma" , Font.BOLD, 11 ));
 
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,8 +88,11 @@ Color exitColor=new Color(77,14,1);
         jPanel5 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        passbook_tab = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1060, 720));
         setResizable(false);
 
         sidePanel.setBackground(new java.awt.Color(53, 12, 3));
@@ -285,15 +327,43 @@ Color exitColor=new Color(77,14,1);
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel1.setText("Hi, ");
 
+        passbook_tab.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        passbook_tab.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Transaction Id", "Amount", "Sent to", "Recieved By", "Trasaction Date"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(passbook_tab);
+
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
         loginPanelLayout.setHorizontalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,7 +372,9 @@ Color exitColor=new Color(77,14,1);
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(171, 171, 171))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -427,7 +499,9 @@ Color exitColor=new Color(77,14,1);
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel loginPanel;
+    private javax.swing.JTable passbook_tab;
     private javax.swing.JPanel sidePanel;
     // End of variables declaration//GEN-END:variables
 }
