@@ -163,7 +163,7 @@ String flagUser="";
                             .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -231,7 +231,7 @@ String flagUser="";
         });
 
         jLabel2.setBackground(new java.awt.Color(97, 34, 21));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/login.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/login_0.png"))); // NOI18N
 
         jLabel6.setForeground(new java.awt.Color(225, 198, 193));
         jLabel6.setText("Login");
@@ -269,7 +269,8 @@ String flagUser="";
         });
 
         jLabel1.setBackground(new java.awt.Color(250, 250, 250));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/signup.png"))); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/signup_0.png"))); // NOI18N
 
         jLabel5.setForeground(new java.awt.Color(225, 198, 193));
         jLabel5.setText("Sign Up");
@@ -279,9 +280,9 @@ String flagUser="";
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(35, 35, 35)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -308,7 +309,7 @@ String flagUser="";
         });
 
         jLabel3.setBackground(new java.awt.Color(250, 250, 250));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/forgotPassword.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/forgot password_0.png"))); // NOI18N
 
         jLabel7.setForeground(new java.awt.Color(225, 198, 193));
         jLabel7.setText("Forgot Password");
@@ -345,7 +346,7 @@ String flagUser="";
         });
 
         jLabel4.setBackground(new java.awt.Color(250, 250, 250));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/exit.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/exit_0.png"))); // NOI18N
 
         jLabel8.setForeground(new java.awt.Color(225, 198, 193));
         jLabel8.setText("Exit");
