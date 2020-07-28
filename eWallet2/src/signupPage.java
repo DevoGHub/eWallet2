@@ -1,6 +1,7 @@
 import javax.swing.JOptionPane;
 import java.sql.*;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,12 +13,28 @@ import java.awt.Color;
  * @author devjy
  */
 public class signupPage extends javax.swing.JFrame {
-int theme=0;
+//common
+int theme;
 themeClass themeObj=new themeClass();
 Color hoverColor=new Color(122,43,16);
 Color activeColor=new Color(97,34,21);
 Color exitColor=new Color(77,14,1);
-    /**
+Color naviLabel;
+Color naviPanelBgColor;
+Color mainPanelBgColor;
+Color logoPanelColor;
+Color logoColor;
+Color textfieldBgColor;
+Color textfieldFgColor;
+Color labelColor;
+Color btnBgColor;
+
+//Level 1
+ImageIcon signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_0.png"));
+ImageIcon loginIcon=new ImageIcon(getClass().getResource("/imgs/login_0.png"));
+ImageIcon forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_0.png"));
+ImageIcon exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_0.png"));
+     /**
      * Creates new form startPage
      */
     public signupPage() {
@@ -27,34 +44,207 @@ Color exitColor=new Color(77,14,1);
         {
             case 0:
             {
-                //Insert theme 0 updates
+                //Common
+                hoverColor=new Color(122,43,16);
+                activeColor=new Color(97,34,21);
+                exitColor=new Color(77,14,1);
+                naviLabel=new Color(225,198,193);
+                naviPanelBgColor=new Color(53,12,3);
+                mainPanelBgColor=new Color(143,125,122);
+                logoPanelColor=new Color(166,49,24);
+                logoColor=new Color(215,178,173);
+                textfieldBgColor=new Color(255,255,255);
+                labelColor=new Color(0,0,0);
+                btnBgColor=new Color(234,195,168);
+                textfieldFgColor=new Color(0,0,0);
+                
+                //Level 1
+                signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_0.png"));
+                loginIcon=new ImageIcon(getClass().getResource("/imgs/login_0.png"));
+                forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_0.png"));
+                exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_0.png"));
             }
             break;
             case 1:
             {
-                //Insert theme 1 updates
+                //Common
+                hoverColor=new Color(205,225,106);
+                activeColor=new Color(177,194,50);
+                exitColor=new Color(224,235,46);
+                naviLabel=new Color(23,118,5);
+                naviPanelBgColor=new Color(185,234,32);
+                mainPanelBgColor=new Color(200,245,0);
+                logoPanelColor=new Color(145,214,46);
+                logoColor=new Color(249,246,141);
+                textfieldBgColor=new Color(255,255,255);
+                labelColor=new Color(0,0,0);
+                btnBgColor=new Color(185,202,100);
+                textfieldFgColor=new Color(0,0,0);
+                
+                //Level 1
+                signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_1.png"));
+                loginIcon=new ImageIcon(getClass().getResource("/imgs/login_1.png"));
+                forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_1.png"));
+                exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_1.png"));
             }
             break;
             case 2:
             {
-                //Insert theme 2 updates
+                //Common
+                hoverColor=new Color(145,135,120);
+                activeColor=new Color(75,75,75);
+                exitColor=new Color(90,90,90);
+                naviLabel=new Color(250,230,170);
+                naviPanelBgColor=new Color(20,20,20);
+                mainPanelBgColor=new Color(50,50,50);
+                logoPanelColor=new Color(100,100,105);
+                logoColor=new Color(225,188,140);
+                textfieldBgColor=new Color(100,100,100);
+                labelColor=new Color(255,255,255);
+                btnBgColor=new Color(140,130,100);
+                textfieldFgColor=new Color(185,190,170);
+                
+                //Level 1
+                signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_2.png"));
+                loginIcon=new ImageIcon(getClass().getResource("/imgs/login_2.png"));
+                forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_2.png"));
+                exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_2.png"));
             }
             break;
             case 3:
             {
-                //Insert theme 3 updates
+                //Common
+                hoverColor=new Color(82,133,106);
+                activeColor=new Color(5, 151, 9);
+                exitColor=new Color(7, 125, 10);
+                naviLabel=new Color(255,188,153);
+                naviPanelBgColor=new Color(196, 14, 14);
+                mainPanelBgColor=new Color(224, 53, 50);
+                logoPanelColor=new Color(36,119,40);
+                logoColor=new Color(235,138,123);
+                textfieldBgColor=new Color(255,255,255);
+                labelColor=new Color(30, 89, 4);
+                btnBgColor=new Color(0,180,0);
+                textfieldFgColor=new Color(53, 130, 43);
+                
+                //Level 1
+                signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_3.png"));
+                loginIcon=new ImageIcon(getClass().getResource("/imgs/login_3.png"));
+                forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_3.png"));
+                exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_3.png"));
             }
             break;
             case 4:
             {
-                //Insert theme 4 updates
+                //Common
+                hoverColor=new Color(0,0,0);
+                activeColor=new Color(134, 23, 99);
+                exitColor=new Color(200, 19, 142);
+                naviLabel=new Color(255,255,255);
+                naviPanelBgColor=new Color(244, 50, 182);
+                mainPanelBgColor=new Color(225, 0, 170);
+                logoPanelColor=new Color(35,35,35);
+                logoColor=new Color(235,225,225);
+                textfieldBgColor=new Color(215,215,215);
+                labelColor=new Color(0,0,0);
+                btnBgColor=new Color(175, 89, 169);
+                textfieldFgColor=new Color(171, 9, 137);
+                
+                //Level 1
+                signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_4.png"));
+                loginIcon=new ImageIcon(getClass().getResource("/imgs/login_4.png"));
+                forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_4.png"));
+                exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_4.png"));
             }
             break;
             default:
             {
-                //Same as case 0
+                //Common
+                hoverColor=new Color(122,43,16);
+                activeColor=new Color(97,34,21);
+                exitColor=new Color(77,14,1);
+                naviLabel=new Color(225,198,193);
+                naviPanelBgColor=new Color(53,12,3);
+                mainPanelBgColor=new Color(143,125,122);
+                logoPanelColor=new Color(166,49,24);
+                logoColor=new Color(215,178,173);
+                textfieldBgColor=new Color(255,255,255);
+                labelColor=new Color(0,0,0);
+                btnBgColor=new Color(234,195,168);
+                textfieldFgColor=new Color(0,0,0);
+                
+                //Level 1
+                signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_0.png"));
+                loginIcon=new ImageIcon(getClass().getResource("/imgs/login_0.png"));
+                forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_0.png"));
+                exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_0.png"));
             }
         }
+        //common
+        logoLabel.setForeground(logoColor);
+        logoPanel.setBackground(logoPanelColor);
+        mainPanel.setBackground(mainPanelBgColor);
+        sidePanel.setBackground(naviPanelBgColor);
+        jButton1.setBackground(btnBgColor); //Activate when required
+        //jButton2.setBackground(btnBgColor); //Activate when required
+        
+        //Level 1
+        signupIconLabel.setIcon(signupIcon);
+        loginIconLabel.setIcon(loginIcon);
+        forgotPasswordIconLabel.setIcon(forgotPasswordIcon);
+        exitIconLabel.setIcon(exitIcon);
+        signupLabel.setForeground(naviLabel);
+        loginLabel.setForeground(naviLabel);
+        forgotPasswordLabel.setForeground(naviLabel);
+        exitLabel.setForeground(naviLabel);
+        
+        //Indiv
+            //sidePanel Content
+        loginPanel.setBackground(exitColor);
+        forgotPasswordPanel.setBackground(exitColor);
+        exitPanel.setBackground(exitColor);
+        signupPanel.setBackground(activeColor);
+        
+            //mainPanel Content
+        jLabel1.setForeground(labelColor);
+        jLabel2.setForeground(labelColor);
+        jLabel3.setForeground(labelColor);
+        jLabel4.setForeground(labelColor);
+        jLabel5.setForeground(labelColor);
+        jLabel6.setForeground(labelColor);
+        jLabel7.setForeground(labelColor);
+        jLabel8.setForeground(labelColor);
+        jLabel9.setForeground(labelColor);
+        jLabel10.setForeground(labelColor);
+        jLabel11.setForeground(labelColor);
+        jLabel12.setForeground(labelColor);
+        jLabel13.setForeground(labelColor);
+        jLabel14.setForeground(labelColor);
+        jLabel15.setForeground(labelColor);
+        name_tf.setBackground(textfieldBgColor);
+        month_tf.setBackground(textfieldBgColor);
+        year_tf.setBackground(textfieldBgColor);
+        date_tf.setBackground(textfieldBgColor);
+        phone_tf.setBackground(textfieldBgColor);
+        email_tf.setBackground(textfieldBgColor);
+        username_tf.setBackground(textfieldBgColor);
+        password_pf1.setBackground(textfieldBgColor);
+        password_pf2.setBackground(textfieldBgColor);
+        question_tf1.setBackground(textfieldBgColor);
+        question_tf2.setBackground(textfieldBgColor);
+        question_tf3.setBackground(textfieldBgColor);
+        name_tf.setForeground(textfieldFgColor);
+        month_tf.setForeground(textfieldFgColor);
+        year_tf.setForeground(textfieldFgColor);
+        date_tf.setForeground(textfieldFgColor);
+        phone_tf.setForeground(textfieldFgColor);
+        email_tf.setForeground(textfieldFgColor);
+        username_tf.setForeground(textfieldFgColor);
+        password_pf1.setForeground(textfieldFgColor);
+        password_pf2.setForeground(textfieldFgColor);
+        question_tf1.setForeground(textfieldFgColor);
+        question_tf2.setForeground(textfieldFgColor);
+        question_tf3.setForeground(textfieldFgColor);
     }
 
     /**
@@ -704,34 +894,207 @@ switch(theme)
 {
     case 0:
     {
-        //Insert theme 0 updates
+        //Common
+        hoverColor=new Color(122,43,16);
+        activeColor=new Color(97,34,21);
+        exitColor=new Color(77,14,1);
+        naviLabel=new Color(225,198,193);
+        naviPanelBgColor=new Color(53,12,3);
+        mainPanelBgColor=new Color(143,125,122);
+        logoPanelColor=new Color(166,49,24);
+        logoColor=new Color(215,178,173);
+        textfieldBgColor=new Color(255,255,255);
+        labelColor=new Color(0,0,0);
+        btnBgColor=new Color(234,195,168);
+        textfieldFgColor=new Color(0,0,0);
+
+        //Level 1
+        signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_0.png"));
+        loginIcon=new ImageIcon(getClass().getResource("/imgs/login_0.png"));
+        forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_0.png"));
+        exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_0.png"));
     }
     break;
     case 1:
     {
-        //Insert theme 1 updates
+        //Common
+        hoverColor=new Color(205,225,106);
+        activeColor=new Color(177,194,50);
+        exitColor=new Color(224,235,46);
+        naviLabel=new Color(23,118,5);
+        naviPanelBgColor=new Color(185,234,32);
+        mainPanelBgColor=new Color(200,245,0);
+        logoPanelColor=new Color(145,214,46);
+        logoColor=new Color(249,246,141);
+        textfieldBgColor=new Color(255,255,255);
+        labelColor=new Color(0,0,0);
+        btnBgColor=new Color(185,202,100);
+        textfieldFgColor=new Color(0,0,0);
+
+        //Level 1
+        signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_1.png"));
+        loginIcon=new ImageIcon(getClass().getResource("/imgs/login_1.png"));
+        forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_1.png"));
+        exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_1.png"));
     }
     break;
     case 2:
     {
-        //Insert theme 2 updates
+        //Common
+        hoverColor=new Color(145,135,120);
+        activeColor=new Color(75,75,75);
+        exitColor=new Color(90,90,90);
+        naviLabel=new Color(250,230,170);
+        naviPanelBgColor=new Color(20,20,20);
+        mainPanelBgColor=new Color(50,50,50);
+        logoPanelColor=new Color(100,100,105);
+        logoColor=new Color(225,188,140);
+        textfieldBgColor=new Color(100,100,100);
+        labelColor=new Color(255,255,255);
+        btnBgColor=new Color(140,130,100);
+        textfieldFgColor=new Color(185,190,170);
+
+        //Level 1
+        signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_2.png"));
+        loginIcon=new ImageIcon(getClass().getResource("/imgs/login_2.png"));
+        forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_2.png"));
+        exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_2.png"));
     }
     break;
     case 3:
     {
-        //Insert theme 3 updates
+        //Common
+        hoverColor=new Color(82,133,106);
+        activeColor=new Color(5, 151, 9);
+        exitColor=new Color(7, 125, 10);
+        naviLabel=new Color(255,188,153);
+        naviPanelBgColor=new Color(196, 14, 14);
+        mainPanelBgColor=new Color(224, 53, 50);
+        logoPanelColor=new Color(36,119,40);
+        logoColor=new Color(235,138,123);
+        textfieldBgColor=new Color(255,255,255);
+        labelColor=new Color(30, 89, 4);
+        btnBgColor=new Color(0,180,0);
+        textfieldFgColor=new Color(53, 130, 43);
+
+        //Level 1
+        signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_3.png"));
+        loginIcon=new ImageIcon(getClass().getResource("/imgs/login_3.png"));
+        forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_3.png"));
+        exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_3.png"));
     }
     break;
     case 4:
     {
-        //Insert theme 4 updates
+        //Common
+        hoverColor=new Color(0,0,0);
+        activeColor=new Color(134, 23, 99);
+        exitColor=new Color(200, 19, 142);
+        naviLabel=new Color(255,255,255);
+        naviPanelBgColor=new Color(244, 50, 182);
+        mainPanelBgColor=new Color(225, 0, 170);
+        logoPanelColor=new Color(35,35,35);
+        logoColor=new Color(235,225,225);
+        textfieldBgColor=new Color(215,215,215);
+        labelColor=new Color(0,0,0);
+        btnBgColor=new Color(175, 89, 169);
+        textfieldFgColor=new Color(171, 9, 137);
+
+        //Level 1
+        signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_4.png"));
+        loginIcon=new ImageIcon(getClass().getResource("/imgs/login_4.png"));
+        forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_4.png"));
+        exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_4.png"));
     }
     break;
     default:
     {
-        //Same as case 0
+        //Common
+        hoverColor=new Color(122,43,16);
+        activeColor=new Color(97,34,21);
+        exitColor=new Color(77,14,1);
+        naviLabel=new Color(225,198,193);
+        naviPanelBgColor=new Color(53,12,3);
+        mainPanelBgColor=new Color(143,125,122);
+        logoPanelColor=new Color(166,49,24);
+        logoColor=new Color(215,178,173);
+        textfieldBgColor=new Color(255,255,255);
+        labelColor=new Color(0,0,0);
+        btnBgColor=new Color(234,195,168);
+        textfieldFgColor=new Color(0,0,0);
+
+        //Level 1
+        signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_0.png"));
+        loginIcon=new ImageIcon(getClass().getResource("/imgs/login_0.png"));
+        forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_0.png"));
+        exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_0.png"));
     }
 }
+//common
+logoLabel.setForeground(logoColor);
+logoPanel.setBackground(logoPanelColor);
+mainPanel.setBackground(mainPanelBgColor);
+sidePanel.setBackground(naviPanelBgColor);
+jButton1.setBackground(btnBgColor); //Activate when required
+//jButton2.setBackground(btnBgColor); //Activate when required
+
+//Level 1
+signupIconLabel.setIcon(signupIcon);
+loginIconLabel.setIcon(loginIcon);
+forgotPasswordIconLabel.setIcon(forgotPasswordIcon);
+exitIconLabel.setIcon(exitIcon);
+signupLabel.setForeground(naviLabel);
+loginLabel.setForeground(naviLabel);
+forgotPasswordLabel.setForeground(naviLabel);
+exitLabel.setForeground(naviLabel);
+
+//Indiv
+    //sidePanel Content
+loginPanel.setBackground(exitColor);
+forgotPasswordPanel.setBackground(exitColor);
+exitPanel.setBackground(exitColor);
+signupPanel.setBackground(activeColor);
+
+    //mainPanel Content
+jLabel1.setForeground(labelColor);
+jLabel2.setForeground(labelColor);
+jLabel3.setForeground(labelColor);
+jLabel4.setForeground(labelColor);
+jLabel5.setForeground(labelColor);
+jLabel6.setForeground(labelColor);
+jLabel7.setForeground(labelColor);
+jLabel8.setForeground(labelColor);
+jLabel9.setForeground(labelColor);
+jLabel10.setForeground(labelColor);
+jLabel11.setForeground(labelColor);
+jLabel12.setForeground(labelColor);
+jLabel13.setForeground(labelColor);
+jLabel14.setForeground(labelColor);
+jLabel15.setForeground(labelColor);
+name_tf.setBackground(textfieldBgColor);
+month_tf.setBackground(textfieldBgColor);
+year_tf.setBackground(textfieldBgColor);
+date_tf.setBackground(textfieldBgColor);
+phone_tf.setBackground(textfieldBgColor);
+email_tf.setBackground(textfieldBgColor);
+username_tf.setBackground(textfieldBgColor);
+password_pf1.setBackground(textfieldBgColor);
+password_pf2.setBackground(textfieldBgColor);
+question_tf1.setBackground(textfieldBgColor);
+question_tf2.setBackground(textfieldBgColor);
+question_tf3.setBackground(textfieldBgColor);
+name_tf.setForeground(textfieldFgColor);
+month_tf.setForeground(textfieldFgColor);
+year_tf.setForeground(textfieldFgColor);
+date_tf.setForeground(textfieldFgColor);
+phone_tf.setForeground(textfieldFgColor);
+email_tf.setForeground(textfieldFgColor);
+username_tf.setForeground(textfieldFgColor);
+password_pf1.setForeground(textfieldFgColor);
+password_pf2.setForeground(textfieldFgColor);
+question_tf1.setForeground(textfieldFgColor);
+question_tf2.setForeground(textfieldFgColor);
+question_tf3.setForeground(textfieldFgColor);
     }//GEN-LAST:event_logoPanelMouseClicked
 
     /**
