@@ -192,7 +192,7 @@ ImageIcon exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_0.png"));
         mainPanel.setBackground(mainPanelBgColor);
         sidePanel.setBackground(naviPanelBgColor);
         jButton1.setBackground(btnBgColor); //Activate when required
-        //jButton2.setBackground(btnBgColor); //Activate when required
+        jButton2.setBackground(btnBgColor); //Activate when required
         
         //Level 1
         signupIconLabel.setIcon(signupIcon);
@@ -961,7 +961,7 @@ logoPanel.setBackground(logoPanelColor);
 mainPanel.setBackground(mainPanelBgColor);
 sidePanel.setBackground(naviPanelBgColor);
 jButton1.setBackground(btnBgColor); //Activate when required
-//jButton2.setBackground(btnBgColor); //Activate when required
+jButton2.setBackground(btnBgColor); //Activate when required
 
 //Level 1
 signupIconLabel.setIcon(signupIcon);
