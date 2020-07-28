@@ -181,6 +181,7 @@ Color btnBgColor;
         changeRecoveryAnswersLabel.setForeground(naviLabel);
         addMoneyLabel.setForeground(naviLabel);
         logoutLabel.setForeground(naviLabel);
+        jLabel1.setForeground(labelColor);
         
         //Indiv
             //sidePanel content
@@ -192,7 +193,6 @@ Color btnBgColor;
         logoutPanel.setBackground(exitColor);
             
             //mainPanel content
-        jLabel1.setForeground(labelColor);
         jLabel2.setForeground(labelColor);
         jLabel3.setForeground(labelColor);
         jLabel4.setForeground(labelColor);
@@ -884,6 +884,7 @@ changePasswordLabel.setForeground(naviLabel);
 changeRecoveryAnswersLabel.setForeground(naviLabel);
 addMoneyLabel.setForeground(naviLabel);
 logoutLabel.setForeground(naviLabel);
+jLabel1.setForeground(labelColor);
 
 //Indiv
     //sidePanel content
@@ -895,7 +896,6 @@ changeRecoveryAnswersPanel.setBackground(exitColor);
 logoutPanel.setBackground(exitColor);
 
     //mainPanel content
-jLabel1.setForeground(labelColor);
 jLabel2.setForeground(labelColor);
 jLabel3.setForeground(labelColor);
 jLabel4.setForeground(labelColor);
