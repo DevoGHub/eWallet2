@@ -1,5 +1,6 @@
 import java.sql.*;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,11 +13,28 @@ import javax.swing.JOptionPane;
  * @author devjy
  */
 public class forgotPasswordPage extends javax.swing.JFrame {
-    int theme=0;
+String flagUser="";
+//common
+int theme;
+themeClass themeObj=new themeClass();
 Color hoverColor=new Color(122,43,16);
 Color activeColor=new Color(97,34,21);
 Color exitColor=new Color(77,14,1);
-String flagUser="";
+Color naviLabel;
+Color naviPanelBgColor;
+Color mainPanelBgColor;
+Color logoPanelColor;
+Color logoColor;
+Color textfieldBgColor;
+Color textfieldFgColor;
+Color labelColor;
+Color btnBgColor;
+
+//Level 1
+ImageIcon signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_0.png"));
+ImageIcon loginIcon=new ImageIcon(getClass().getResource("/imgs/login_0.png"));
+ImageIcon forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_0.png"));
+ImageIcon exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_0.png"));
     /**
      * Creates new form forgotPasswordPage
      */
@@ -25,8 +43,193 @@ String flagUser="";
         new_pf.setVisible(false);
         confirm_pf.setVisible(false);
         jButton2.setVisible(false);
-        jLabel15.setVisible(false);
-        jLabel16.setVisible(false);
+        jLabel5.setVisible(false);
+        jLabel6.setVisible(false);
+        theme=themeObj.getPref();
+        switch(theme)
+        {
+            case 0:
+            {
+                //Common
+                hoverColor=new Color(122,43,16);
+                activeColor=new Color(97,34,21);
+                exitColor=new Color(77,14,1);
+                naviLabel=new Color(225,198,193);
+                naviPanelBgColor=new Color(53,12,3);
+                mainPanelBgColor=new Color(143,125,122);
+                logoPanelColor=new Color(166,49,24);
+                logoColor=new Color(215,178,173);
+                textfieldBgColor=new Color(255,255,255);
+                labelColor=new Color(0,0,0);
+                btnBgColor=new Color(234,195,168);
+                textfieldFgColor=new Color(0,0,0);
+                
+                //Level 1
+                signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_0.png"));
+                loginIcon=new ImageIcon(getClass().getResource("/imgs/login_0.png"));
+                forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_0.png"));
+                exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_0.png"));
+            }
+            break;
+            case 1:
+            {
+                //Common
+                hoverColor=new Color(165,205,66);
+                activeColor=new Color(147,184,0);
+                exitColor=new Color(184,225,6);
+                naviLabel=new Color(23,118,5);
+                naviPanelBgColor=new Color(145,204,0);
+                mainPanelBgColor=new Color(160,205,0);
+                logoPanelColor=new Color(105,174,6);
+                logoColor=new Color(209,206,101);
+                textfieldBgColor=new Color(255,255,255);
+                labelColor=new Color(0,0,0);
+                btnBgColor=new Color(185,202,60);
+                textfieldFgColor=new Color(0,0,0);
+                
+                //Level 1
+                signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_1.png"));
+                loginIcon=new ImageIcon(getClass().getResource("/imgs/login_1.png"));
+                forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_1.png"));
+                exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_1.png"));
+            }
+            break;
+            case 2:
+            {
+                //Common
+                hoverColor=new Color(145,135,120);
+                activeColor=new Color(75,75,75);
+                exitColor=new Color(90,90,90);
+                naviLabel=new Color(250,230,170);
+                naviPanelBgColor=new Color(20,20,20);
+                mainPanelBgColor=new Color(50,50,50);
+                logoPanelColor=new Color(100,100,105);
+                logoColor=new Color(225,188,140);
+                textfieldBgColor=new Color(100,100,100);
+                labelColor=new Color(255,255,255);
+                btnBgColor=new Color(140,130,100);
+                textfieldFgColor=new Color(185,190,170);
+                
+                //Level 1
+                signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_2.png"));
+                loginIcon=new ImageIcon(getClass().getResource("/imgs/login_2.png"));
+                forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_2.png"));
+                exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_2.png"));
+            }
+            break;
+            case 3:
+            {
+                //Common
+                hoverColor=new Color(82,133,106);
+                activeColor=new Color(5, 151, 9);
+                exitColor=new Color(7, 125, 10);
+                naviLabel=new Color(255,188,153);
+                naviPanelBgColor=new Color(196, 14, 14);
+                mainPanelBgColor=new Color(224, 53, 50);
+                logoPanelColor=new Color(36,119,40);
+                logoColor=new Color(235,138,123);
+                textfieldBgColor=new Color(255,255,255);
+                labelColor=new Color(30, 89, 4);
+                btnBgColor=new Color(0,180,0);
+                textfieldFgColor=new Color(53, 130, 43);
+                
+                //Level 1
+                signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_3.png"));
+                loginIcon=new ImageIcon(getClass().getResource("/imgs/login_3.png"));
+                forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_3.png"));
+                exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_3.png"));
+            }
+            break;
+            case 4:
+            {
+                //Common
+                hoverColor=new Color(0,0,0);
+                activeColor=new Color(134, 23, 99);
+                exitColor=new Color(200, 19, 142);
+                naviLabel=new Color(255,255,255);
+                naviPanelBgColor=new Color(244, 50, 182);
+                mainPanelBgColor=new Color(225, 0, 170);
+                logoPanelColor=new Color(35,35,35);
+                logoColor=new Color(235,225,225);
+                textfieldBgColor=new Color(215,215,215);
+                labelColor=new Color(0,0,0);
+                btnBgColor=new Color(175, 89, 169);
+                textfieldFgColor=new Color(171, 9, 137);
+                
+                //Level 1
+                signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_4.png"));
+                loginIcon=new ImageIcon(getClass().getResource("/imgs/login_4.png"));
+                forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_4.png"));
+                exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_4.png"));
+            }
+            break;
+            default:
+            {
+                //Common
+                hoverColor=new Color(122,43,16);
+                activeColor=new Color(97,34,21);
+                exitColor=new Color(77,14,1);
+                naviLabel=new Color(225,198,193);
+                naviPanelBgColor=new Color(53,12,3);
+                mainPanelBgColor=new Color(143,125,122);
+                logoPanelColor=new Color(166,49,24);
+                logoColor=new Color(215,178,173);
+                textfieldBgColor=new Color(255,255,255);
+                labelColor=new Color(0,0,0);
+                btnBgColor=new Color(234,195,168);
+                textfieldFgColor=new Color(0,0,0);
+                
+                //Level 1
+                signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_0.png"));
+                loginIcon=new ImageIcon(getClass().getResource("/imgs/login_0.png"));
+                forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_0.png"));
+                exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_0.png"));
+            }
+        }
+        //common
+        logoLabel.setForeground(logoColor);
+        logoPanel.setBackground(logoPanelColor);
+        mainPanel.setBackground(mainPanelBgColor);
+        sidePanel.setBackground(naviPanelBgColor);
+        jButton1.setBackground(btnBgColor); //Activate when required
+        //jButton2.setBackground(btnBgColor); //Activate when required
+        
+        //Level 1
+        signupIconLabel.setIcon(signupIcon);
+        loginIconLabel.setIcon(loginIcon);
+        forgotPasswordIconLabel.setIcon(forgotPasswordIcon);
+        exitIconLabel.setIcon(exitIcon);
+        signupLabel.setForeground(naviLabel);
+        loginLabel.setForeground(naviLabel);
+        forgotPasswordLabel.setForeground(naviLabel);
+        exitLabel.setForeground(naviLabel);
+        
+        //Indiv
+            //sidePanel Content
+        loginPanel.setBackground(exitColor);
+        forgotPasswordPanel.setBackground(activeColor);
+        exitPanel.setBackground(exitColor);
+        signupPanel.setBackground(exitColor);
+        
+            //mainPanel Content
+        jLabel1.setForeground(labelColor);
+        jLabel2.setForeground(labelColor);
+        jLabel3.setForeground(labelColor);
+        jLabel4.setForeground(labelColor);
+        jLabel5.setForeground(labelColor);
+        jLabel6.setForeground(labelColor);
+        you_tf.setBackground(textfieldBgColor);
+        city_tf.setBackground(textfieldBgColor);
+        animal_tf.setBackground(textfieldBgColor);
+        sport_tf.setBackground(textfieldBgColor);
+        new_pf.setBackground(textfieldBgColor);
+        confirm_pf.setBackground(textfieldBgColor);
+        you_tf.setForeground(textfieldFgColor);
+        city_tf.setForeground(textfieldFgColor);
+        animal_tf.setForeground(textfieldFgColor);
+        sport_tf.setForeground(textfieldFgColor);
+        new_pf.setForeground(textfieldFgColor);
+        confirm_pf.setForeground(textfieldFgColor);
     }
 
     /**
@@ -38,85 +241,91 @@ String flagUser="";
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        loginPanel = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        mainPanel = new javax.swing.JPanel();
+        logoPanel = new javax.swing.JPanel();
+        logoLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         you_tf = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         city_tf = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         sport_tf = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         animal_tf = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         new_pf = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
-        jLabel16 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         confirm_pf = new javax.swing.JPasswordField();
         sidePanel = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        loginPanel = new javax.swing.JPanel();
+        loginIconLabel = new javax.swing.JLabel();
+        loginLabel = new javax.swing.JLabel();
+        signupPanel = new javax.swing.JPanel();
+        signupIconLabel = new javax.swing.JLabel();
+        signupLabel = new javax.swing.JLabel();
+        forgotPasswordPanel = new javax.swing.JPanel();
+        forgotPasswordIconLabel = new javax.swing.JLabel();
+        forgotPasswordLabel = new javax.swing.JLabel();
+        exitPanel = new javax.swing.JPanel();
+        exitIconLabel = new javax.swing.JLabel();
+        exitLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        loginPanel.setBackground(new java.awt.Color(143, 125, 122));
+        mainPanel.setBackground(new java.awt.Color(143, 125, 122));
 
-        jPanel5.setBackground(new java.awt.Color(166, 49, 24));
-        jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logoPanel.setBackground(new java.awt.Color(166, 49, 24));
+        logoPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        logoPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logoPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoPanelMouseClicked(evt);
+            }
+        });
 
-        jLabel9.setBackground(new java.awt.Color(215, 178, 173));
-        jLabel9.setFont(new java.awt.Font("Segoe Script", 3, 48)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(215, 178, 173));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel9.setText("PayZZ");
+        logoLabel.setBackground(new java.awt.Color(215, 178, 173));
+        logoLabel.setFont(new java.awt.Font("Segoe Script", 3, 48)); // NOI18N
+        logoLabel.setForeground(new java.awt.Color(215, 178, 173));
+        logoLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        logoLabel.setText("PayZZ");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
+        logoPanel.setLayout(logoPanelLayout);
+        logoPanelLayout.setHorizontalGroup(
+            logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logoPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel9)
+                .addComponent(logoLabel)
                 .addGap(98, 98, 98))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        logoPanelLayout.setVerticalGroup(
+            logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logoPanelLayout.createSequentialGroup()
                 .addContainerGap(26, Short.MAX_VALUE)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel10.setText("Username");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel1.setText("Username");
 
         you_tf.setPreferredSize(new java.awt.Dimension(485, 27));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel11.setText("Your Favourite City");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setText("Your Favourite City");
 
         city_tf.setPreferredSize(new java.awt.Dimension(485, 27));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel12.setText("Your Favourite Sport");
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setText("Your Favourite Sport");
 
         sport_tf.setPreferredSize(new java.awt.Dimension(485, 27));
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel13.setText("Your Favourite Animal");
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setText("Your Favourite Animal");
 
         animal_tf.setPreferredSize(new java.awt.Dimension(485, 27));
 
@@ -130,8 +339,8 @@ String flagUser="";
             }
         });
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel15.setText("New Password");
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setText("New Password");
 
         new_pf.setPreferredSize(new java.awt.Dimension(485, 27));
 
@@ -145,32 +354,32 @@ String flagUser="";
             }
         });
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel16.setText("Confirm Password");
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setText("Confirm Password");
 
         confirm_pf.setPreferredSize(new java.awt.Dimension(485, 27));
 
-        javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
-        loginPanel.setLayout(loginPanelLayout);
-        loginPanelLayout.setHorizontalGroup(
-            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(loginPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(logoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGap(243, 243, 243)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(loginPanelLayout.createSequentialGroup()
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(you_tf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(city_tf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(sport_tf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -178,41 +387,41 @@ String flagUser="";
                             .addComponent(new_pf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(confirm_pf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(71, 71, 71))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(223, 223, 223))
         );
-        loginPanelLayout.setVerticalGroup(
-            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPanelLayout.createSequentialGroup()
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(68, 68, 68)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
                     .addComponent(you_tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
                     .addComponent(city_tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
                     .addComponent(sport_tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
                     .addComponent(animal_tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
                     .addComponent(new_pf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
                     .addComponent(confirm_pf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
@@ -220,185 +429,189 @@ String flagUser="";
         );
 
         sidePanel.setBackground(new java.awt.Color(53, 12, 3));
+        sidePanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(0, 0, 0)));
 
-        jPanel2.setBackground(new java.awt.Color(77, 14, 1));
-        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        loginPanel.setBackground(new java.awt.Color(77, 14, 1));
+        loginPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        loginPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel2MouseClicked(evt);
+                loginPanelMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel2MouseEntered(evt);
+                loginPanelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel2MouseExited(evt);
+                loginPanelMouseExited(evt);
             }
         });
 
-        jLabel2.setBackground(new java.awt.Color(97, 34, 21));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/login_0.png"))); // NOI18N
+        loginIconLabel.setBackground(new java.awt.Color(97, 34, 21));
+        loginIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/login_0.png"))); // NOI18N
 
-        jLabel6.setForeground(new java.awt.Color(225, 198, 193));
-        jLabel6.setText("Login");
+        loginLabel.setForeground(new java.awt.Color(225, 198, 193));
+        loginLabel.setText("Login");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
+        loginPanel.setLayout(loginPanelLayout);
+        loginPanelLayout.setHorizontalGroup(
+            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginPanelLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(loginIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(loginLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        loginPanelLayout.setVerticalGroup(
+            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(loginIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(loginLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        jPanel1.setBackground(new java.awt.Color(77, 14, 1));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        signupPanel.setBackground(new java.awt.Color(77, 14, 1));
+        signupPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        signupPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signupPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel1MouseClicked(evt);
+                signupPanelMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel1MouseEntered(evt);
+                signupPanelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel1MouseExited(evt);
+                signupPanelMouseExited(evt);
             }
         });
 
-        jLabel1.setBackground(new java.awt.Color(250, 250, 250));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/signup_0.png"))); // NOI18N
+        signupIconLabel.setBackground(new java.awt.Color(250, 250, 250));
+        signupIconLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        signupIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/signup_0.png"))); // NOI18N
 
-        jLabel5.setForeground(new java.awt.Color(225, 198, 193));
-        jLabel5.setText("Sign Up");
+        signupLabel.setForeground(new java.awt.Color(225, 198, 193));
+        signupLabel.setText("Sign Up");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout signupPanelLayout = new javax.swing.GroupLayout(signupPanel);
+        signupPanel.setLayout(signupPanelLayout);
+        signupPanelLayout.setHorizontalGroup(
+            signupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(signupPanelLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(signupIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(signupLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        signupPanelLayout.setVerticalGroup(
+            signupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signupPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(signupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(signupIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(signupLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        jPanel3.setBackground(new java.awt.Color(97, 34, 21));
-        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        forgotPasswordPanel.setBackground(new java.awt.Color(97, 34, 21));
+        forgotPasswordPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        forgotPasswordPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        forgotPasswordPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel3MouseClicked(evt);
+                forgotPasswordPanelMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel3MouseEntered(evt);
+                forgotPasswordPanelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel3MouseExited(evt);
+                forgotPasswordPanelMouseExited(evt);
             }
         });
 
-        jLabel3.setBackground(new java.awt.Color(250, 250, 250));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/forgot password_0.png"))); // NOI18N
+        forgotPasswordIconLabel.setBackground(new java.awt.Color(250, 250, 250));
+        forgotPasswordIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/forgot password_0.png"))); // NOI18N
 
-        jLabel7.setForeground(new java.awt.Color(225, 198, 193));
-        jLabel7.setText("Forgot Password");
+        forgotPasswordLabel.setForeground(new java.awt.Color(225, 198, 193));
+        forgotPasswordLabel.setText("Forgot Password");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout forgotPasswordPanelLayout = new javax.swing.GroupLayout(forgotPasswordPanel);
+        forgotPasswordPanel.setLayout(forgotPasswordPanelLayout);
+        forgotPasswordPanelLayout.setHorizontalGroup(
+            forgotPasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(forgotPasswordPanelLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(forgotPasswordIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(forgotPasswordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        forgotPasswordPanelLayout.setVerticalGroup(
+            forgotPasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(forgotPasswordPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(forgotPasswordIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(forgotPasswordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel4.setBackground(new java.awt.Color(77, 14, 1));
-        jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        exitPanel.setBackground(new java.awt.Color(77, 14, 1));
+        exitPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        exitPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel4MouseClicked(evt);
+                exitPanelMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel4MouseEntered(evt);
+                exitPanelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel4MouseExited(evt);
+                exitPanelMouseExited(evt);
             }
         });
 
-        jLabel4.setBackground(new java.awt.Color(250, 250, 250));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/exit_0.png"))); // NOI18N
+        exitIconLabel.setBackground(new java.awt.Color(250, 250, 250));
+        exitIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/exit_0.png"))); // NOI18N
 
-        jLabel8.setForeground(new java.awt.Color(225, 198, 193));
-        jLabel8.setText("Exit");
+        exitLabel.setForeground(new java.awt.Color(225, 198, 193));
+        exitLabel.setText("Exit");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout exitPanelLayout = new javax.swing.GroupLayout(exitPanel);
+        exitPanel.setLayout(exitPanelLayout);
+        exitPanelLayout.setHorizontalGroup(
+            exitPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exitPanelLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(exitIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(exitLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+        exitPanelLayout.setVerticalGroup(
+            exitPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exitPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(exitPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(exitIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(exitLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout sidePanelLayout = new javax.swing.GroupLayout(sidePanel);
         sidePanel.setLayout(sidePanelLayout);
         sidePanelLayout.setHorizontalGroup(
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(signupPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(loginPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(forgotPasswordPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(exitPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         sidePanelLayout.setVerticalGroup(
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sidePanelLayout.createSequentialGroup()
                 .addGap(103, 103, 103)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(signupPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(forgotPasswordPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(437, Short.MAX_VALUE))
+                .addComponent(exitPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(434, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -408,62 +621,62 @@ String flagUser="";
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(sidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(loginPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(loginPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+    private void signupPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupPanelMouseClicked
 new signupPage().setVisible(true);
 this.setVisible(false);
-    }//GEN-LAST:event_jPanel1MouseClicked
+    }//GEN-LAST:event_signupPanelMouseClicked
 
-    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+    private void loginPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginPanelMouseClicked
 new loginPage().setVisible(true);
 this.setVisible(false);
-    }//GEN-LAST:event_jPanel2MouseClicked
+    }//GEN-LAST:event_loginPanelMouseClicked
 
-    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+    private void exitPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitPanelMouseClicked
 System.exit(0);
-    }//GEN-LAST:event_jPanel4MouseClicked
+    }//GEN-LAST:event_exitPanelMouseClicked
 
-    private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
-jPanel1.setBackground(hoverColor);
-    }//GEN-LAST:event_jPanel1MouseEntered
+    private void signupPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupPanelMouseEntered
+signupPanel.setBackground(hoverColor);
+    }//GEN-LAST:event_signupPanelMouseEntered
 
-    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
-jPanel2.setBackground(hoverColor);
-    }//GEN-LAST:event_jPanel2MouseEntered
+    private void loginPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginPanelMouseEntered
+loginPanel.setBackground(hoverColor);
+    }//GEN-LAST:event_loginPanelMouseEntered
 
-    private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
-jPanel3.setBackground(hoverColor);
-    }//GEN-LAST:event_jPanel3MouseEntered
+    private void forgotPasswordPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotPasswordPanelMouseEntered
+forgotPasswordPanel.setBackground(hoverColor);
+    }//GEN-LAST:event_forgotPasswordPanelMouseEntered
 
-    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
-jPanel4.setBackground(hoverColor);
-    }//GEN-LAST:event_jPanel4MouseEntered
+    private void exitPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitPanelMouseEntered
+exitPanel.setBackground(hoverColor);
+    }//GEN-LAST:event_exitPanelMouseEntered
 
-    private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
-jPanel1.setBackground(exitColor);
-    }//GEN-LAST:event_jPanel1MouseExited
+    private void signupPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupPanelMouseExited
+signupPanel.setBackground(exitColor);
+    }//GEN-LAST:event_signupPanelMouseExited
 
-    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
-jPanel2.setBackground(exitColor);
-    }//GEN-LAST:event_jPanel2MouseExited
+    private void loginPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginPanelMouseExited
+loginPanel.setBackground(exitColor);
+    }//GEN-LAST:event_loginPanelMouseExited
 
-    private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
-jPanel3.setBackground(activeColor);
-    }//GEN-LAST:event_jPanel3MouseExited
+    private void forgotPasswordPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotPasswordPanelMouseExited
+forgotPasswordPanel.setBackground(activeColor);
+    }//GEN-LAST:event_forgotPasswordPanelMouseExited
 
-    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
-jPanel4.setBackground(exitColor);
-    }//GEN-LAST:event_jPanel4MouseExited
+    private void exitPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitPanelMouseExited
+exitPanel.setBackground(exitColor);
+    }//GEN-LAST:event_exitPanelMouseExited
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //to verify user and the recovery quetions match up
@@ -501,17 +714,17 @@ jPanel4.setBackground(exitColor);
                         sport_tf.setVisible(false);
                         city_tf.setVisible(false);
                         you_tf.setVisible(false);
-                        jLabel11.setVisible(false);
-                        jLabel12.setVisible(false);
-                        jLabel13.setVisible(false);
-                        jLabel10.setVisible(false);
+                        jLabel2.setVisible(false);
+                        jLabel3.setVisible(false);
+                        jLabel4.setVisible(false);
+                        jLabel1.setVisible(false);
                         new_pf.setVisible(true);
                         confirm_pf.setVisible(true);
                         new_pf.setVisible(true);
                         confirm_pf.setVisible(true);
                         jButton2.setVisible(true);
-                        jLabel15.setVisible(true);
-                        jLabel16.setVisible(true);
+                        jLabel5.setVisible(true);
+                        jLabel6.setVisible(true);
                         flagUser=username;
                     }
                     else //else for conditon 1
@@ -566,23 +779,23 @@ jPanel4.setBackground(exitColor);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+    private void forgotPasswordPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotPasswordPanelMouseClicked
 jButton1.setVisible(true);
 animal_tf.setVisible(true);
 sport_tf.setVisible(true);
 city_tf.setVisible(true);
 you_tf.setVisible(true);
-jLabel11.setVisible(true);
-jLabel12.setVisible(true);
-jLabel13.setVisible(true);
-jLabel10.setVisible(true);
+jLabel2.setVisible(true);
+jLabel3.setVisible(true);
+jLabel4.setVisible(true);
+jLabel1.setVisible(true);
 new_pf.setVisible(false);
 confirm_pf.setVisible(false);
 new_pf.setVisible(false);
 confirm_pf.setVisible(false);
 jButton2.setVisible(false);
-jLabel15.setVisible(false);
-jLabel16.setVisible(false);
+jLabel5.setVisible(false);
+jLabel6.setVisible(false);
 you_tf.setText("");
 animal_tf.setText("");
 sport_tf.setText("");
@@ -590,7 +803,203 @@ city_tf.setText("");
 new_pf.setText("");
 confirm_pf.setText("");
 flagUser="";
-    }//GEN-LAST:event_jPanel3MouseClicked
+    }//GEN-LAST:event_forgotPasswordPanelMouseClicked
+
+    private void logoPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoPanelMouseClicked
+if(theme>=4 || theme<=-1)
+{
+    theme=0;
+}
+else
+{
+    theme++;
+}
+themeObj.setPref(theme);
+switch(theme)
+{
+    case 0:
+    {
+        //Common
+        hoverColor=new Color(122,43,16);
+        activeColor=new Color(97,34,21);
+        exitColor=new Color(77,14,1);
+        naviLabel=new Color(225,198,193);
+        naviPanelBgColor=new Color(53,12,3);
+        mainPanelBgColor=new Color(143,125,122);
+        logoPanelColor=new Color(166,49,24);
+        logoColor=new Color(215,178,173);
+        textfieldBgColor=new Color(255,255,255);
+        labelColor=new Color(0,0,0);
+        btnBgColor=new Color(234,195,168);
+        textfieldFgColor=new Color(0,0,0);
+
+        //Level 1
+        signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_0.png"));
+        loginIcon=new ImageIcon(getClass().getResource("/imgs/login_0.png"));
+        forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_0.png"));
+        exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_0.png"));
+    }
+    break;
+    case 1:
+    {
+        //Common
+        hoverColor=new Color(165,205,66);
+        activeColor=new Color(147,184,0);
+        exitColor=new Color(184,225,6);
+        naviLabel=new Color(23,118,5);
+        naviPanelBgColor=new Color(145,204,0);
+        mainPanelBgColor=new Color(160,205,0);
+        logoPanelColor=new Color(105,174,6);
+        logoColor=new Color(209,206,101);
+        textfieldBgColor=new Color(255,255,255);
+        labelColor=new Color(0,0,0);
+        btnBgColor=new Color(185,202,60);
+        textfieldFgColor=new Color(0,0,0);
+
+        //Level 1
+        signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_1.png"));
+        loginIcon=new ImageIcon(getClass().getResource("/imgs/login_1.png"));
+        forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_1.png"));
+        exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_1.png"));
+    }
+    break;
+    case 2:
+    {
+        //Common
+        hoverColor=new Color(145,135,120);
+        activeColor=new Color(75,75,75);
+        exitColor=new Color(90,90,90);
+        naviLabel=new Color(250,230,170);
+        naviPanelBgColor=new Color(20,20,20);
+        mainPanelBgColor=new Color(50,50,50);
+        logoPanelColor=new Color(100,100,105);
+        logoColor=new Color(225,188,140);
+        textfieldBgColor=new Color(100,100,100);
+        labelColor=new Color(255,255,255);
+        btnBgColor=new Color(140,130,100);
+        textfieldFgColor=new Color(185,190,170);
+
+        //Level 1
+        signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_2.png"));
+        loginIcon=new ImageIcon(getClass().getResource("/imgs/login_2.png"));
+        forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_2.png"));
+        exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_2.png"));
+    }
+    break;
+    case 3:
+    {
+        //Common
+        hoverColor=new Color(82,133,106);
+        activeColor=new Color(5, 151, 9);
+        exitColor=new Color(7, 125, 10);
+        naviLabel=new Color(255,188,153);
+        naviPanelBgColor=new Color(196, 14, 14);
+        mainPanelBgColor=new Color(224, 53, 50);
+        logoPanelColor=new Color(36,119,40);
+        logoColor=new Color(235,138,123);
+        textfieldBgColor=new Color(255,255,255);
+        labelColor=new Color(30, 89, 4);
+        btnBgColor=new Color(0,180,0);
+        textfieldFgColor=new Color(53, 130, 43);
+
+        //Level 1
+        signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_3.png"));
+        loginIcon=new ImageIcon(getClass().getResource("/imgs/login_3.png"));
+        forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_3.png"));
+        exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_3.png"));
+    }
+    break;
+    case 4:
+    {
+        //Common
+        hoverColor=new Color(0,0,0);
+        activeColor=new Color(134, 23, 99);
+        exitColor=new Color(200, 19, 142);
+        naviLabel=new Color(255,255,255);
+        naviPanelBgColor=new Color(244, 50, 182);
+        mainPanelBgColor=new Color(225, 0, 170);
+        logoPanelColor=new Color(35,35,35);
+        logoColor=new Color(235,225,225);
+        textfieldBgColor=new Color(215,215,215);
+        labelColor=new Color(0,0,0);
+        btnBgColor=new Color(175, 89, 169);
+        textfieldFgColor=new Color(171, 9, 137);
+
+        //Level 1
+        signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_4.png"));
+        loginIcon=new ImageIcon(getClass().getResource("/imgs/login_4.png"));
+        forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_4.png"));
+        exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_4.png"));
+    }
+    break;
+    default:
+    {
+        //Common
+        hoverColor=new Color(122,43,16);
+        activeColor=new Color(97,34,21);
+        exitColor=new Color(77,14,1);
+        naviLabel=new Color(225,198,193);
+        naviPanelBgColor=new Color(53,12,3);
+        mainPanelBgColor=new Color(143,125,122);
+        logoPanelColor=new Color(166,49,24);
+        logoColor=new Color(215,178,173);
+        textfieldBgColor=new Color(255,255,255);
+        labelColor=new Color(0,0,0);
+        btnBgColor=new Color(234,195,168);
+        textfieldFgColor=new Color(0,0,0);
+
+        //Level 1
+        signupIcon=new ImageIcon(getClass().getResource("/imgs/signup_0.png"));
+        loginIcon=new ImageIcon(getClass().getResource("/imgs/login_0.png"));
+        forgotPasswordIcon=new ImageIcon(getClass().getResource("/imgs/forgot password_0.png"));
+        exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_0.png"));
+    }
+}
+//common
+logoLabel.setForeground(logoColor);
+logoPanel.setBackground(logoPanelColor);
+mainPanel.setBackground(mainPanelBgColor);
+sidePanel.setBackground(naviPanelBgColor);
+jButton1.setBackground(btnBgColor); //Activate when required
+//jButton2.setBackground(btnBgColor); //Activate when required
+
+//Level 1
+signupIconLabel.setIcon(signupIcon);
+loginIconLabel.setIcon(loginIcon);
+forgotPasswordIconLabel.setIcon(forgotPasswordIcon);
+exitIconLabel.setIcon(exitIcon);
+signupLabel.setForeground(naviLabel);
+loginLabel.setForeground(naviLabel);
+forgotPasswordLabel.setForeground(naviLabel);
+exitLabel.setForeground(naviLabel);
+
+//Indiv
+    //sidePanel Content
+loginPanel.setBackground(exitColor);
+forgotPasswordPanel.setBackground(activeColor);
+exitPanel.setBackground(exitColor);
+signupPanel.setBackground(exitColor);
+
+    //mainPanel Content
+jLabel1.setForeground(labelColor);
+jLabel2.setForeground(labelColor);
+jLabel3.setForeground(labelColor);
+jLabel4.setForeground(labelColor);
+jLabel5.setForeground(labelColor);
+jLabel6.setForeground(labelColor);
+you_tf.setBackground(textfieldBgColor);
+city_tf.setBackground(textfieldBgColor);
+animal_tf.setBackground(textfieldBgColor);
+sport_tf.setBackground(textfieldBgColor);
+new_pf.setBackground(textfieldBgColor);
+confirm_pf.setBackground(textfieldBgColor);
+you_tf.setForeground(textfieldFgColor);
+city_tf.setForeground(textfieldFgColor);
+animal_tf.setForeground(textfieldFgColor);
+sport_tf.setForeground(textfieldFgColor);
+new_pf.setForeground(textfieldFgColor);
+confirm_pf.setForeground(textfieldFgColor);
+    }//GEN-LAST:event_logoPanelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -631,31 +1040,31 @@ flagUser="";
     private javax.swing.JTextField animal_tf;
     private javax.swing.JTextField city_tf;
     private javax.swing.JPasswordField confirm_pf;
+    private javax.swing.JLabel exitIconLabel;
+    private javax.swing.JLabel exitLabel;
+    private javax.swing.JPanel exitPanel;
+    private javax.swing.JLabel forgotPasswordIconLabel;
+    private javax.swing.JLabel forgotPasswordLabel;
+    private javax.swing.JPanel forgotPasswordPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel loginIconLabel;
+    private javax.swing.JLabel loginLabel;
     private javax.swing.JPanel loginPanel;
+    private javax.swing.JLabel logoLabel;
+    private javax.swing.JPanel logoPanel;
+    private javax.swing.JPanel mainPanel;
     private javax.swing.JPasswordField new_pf;
     private javax.swing.JPanel sidePanel;
+    private javax.swing.JLabel signupIconLabel;
+    private javax.swing.JLabel signupLabel;
+    private javax.swing.JPanel signupPanel;
     private javax.swing.JTextField sport_tf;
     private javax.swing.JTextField you_tf;
     // End of variables declaration//GEN-END:variables

@@ -68,17 +68,17 @@ ImageIcon exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_0.png"));
             case 1:
             {
                 //Common
-                hoverColor=new Color(205,225,106);
-                activeColor=new Color(177,194,50);
-                exitColor=new Color(224,235,46);
+                hoverColor=new Color(165,205,66);
+                activeColor=new Color(147,184,0);
+                exitColor=new Color(184,225,6);
                 naviLabel=new Color(23,118,5);
-                naviPanelBgColor=new Color(185,234,32);
-                mainPanelBgColor=new Color(200,245,0);
-                logoPanelColor=new Color(145,214,46);
-                logoColor=new Color(249,246,141);
+                naviPanelBgColor=new Color(145,204,0);
+                mainPanelBgColor=new Color(160,205,0);
+                logoPanelColor=new Color(105,174,6);
+                logoColor=new Color(209,206,101);
                 textfieldBgColor=new Color(255,255,255);
                 labelColor=new Color(0,0,0);
-                btnBgColor=new Color(185,202,100);
+                btnBgColor=new Color(185,202,60);
                 textfieldFgColor=new Color(0,0,0);
                 
                 //Level 1
@@ -308,8 +308,10 @@ ImageIcon exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_0.png"));
         setResizable(false);
 
         sidePanel.setBackground(new java.awt.Color(53, 12, 3));
+        sidePanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(0, 0, 0)));
 
         loginPanel.setBackground(new java.awt.Color(77, 14, 1));
+        loginPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         loginPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -349,6 +351,7 @@ ImageIcon exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_0.png"));
         );
 
         signupPanel.setBackground(new java.awt.Color(97, 34, 21));
+        signupPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         signupPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signupPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -390,6 +393,7 @@ ImageIcon exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_0.png"));
         );
 
         forgotPasswordPanel.setBackground(new java.awt.Color(77, 14, 1));
+        forgotPasswordPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         forgotPasswordPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         forgotPasswordPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -492,6 +496,7 @@ ImageIcon exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_0.png"));
         mainPanel.setBackground(new java.awt.Color(143, 125, 122));
 
         logoPanel.setBackground(new java.awt.Color(166, 49, 24));
+        logoPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         logoPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logoPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -628,7 +633,7 @@ ImageIcon exitIcon=new ImageIcon(getClass().getResource("/imgs/exit_0.png"));
                     .addComponent(question_tf2)
                     .addComponent(question_tf3)
                     .addComponent(title_cb, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -918,17 +923,17 @@ switch(theme)
     case 1:
     {
         //Common
-        hoverColor=new Color(205,225,106);
-        activeColor=new Color(177,194,50);
-        exitColor=new Color(224,235,46);
+        hoverColor=new Color(165,205,66);
+        activeColor=new Color(147,184,0);
+        exitColor=new Color(184,225,6);
         naviLabel=new Color(23,118,5);
-        naviPanelBgColor=new Color(185,234,32);
-        mainPanelBgColor=new Color(200,245,0);
-        logoPanelColor=new Color(145,214,46);
-        logoColor=new Color(249,246,141);
+        naviPanelBgColor=new Color(145,204,0);
+        mainPanelBgColor=new Color(160,205,0);
+        logoPanelColor=new Color(105,174,6);
+        logoColor=new Color(209,206,101);
         textfieldBgColor=new Color(255,255,255);
         labelColor=new Color(0,0,0);
-        btnBgColor=new Color(185,202,100);
+        btnBgColor=new Color(185,202,60);
         textfieldFgColor=new Color(0,0,0);
 
         //Level 1
